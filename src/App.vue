@@ -1,16 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1 class="text-green-300 text-7xl">
+    Headless UI
+  </h1>
+  <Overlay />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Overlay from "./components/Overlay.vue"
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: "App",
+  components: { Overlay },
 }
 </script>
 
