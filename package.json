@@ -8,13 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@formvuelate/plugin-vee-validate": "^2.1.0",
     "@headlessui/vue": "^0.3.1-4942928",
     "@heroicons/vue": "^1.0.0",
     "autoprefixer": "^10.2.5",
     "core-js": "^3.6.5",
+    "formvuelate": "^3.1.0",
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "yup": "^0.32.9",
+    "vee-validate": "^4.3.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

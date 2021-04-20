@@ -1,16 +1,16 @@
 <template>
   <h1 class="text-green-300 text-7xl">
-    Headless UI
+    formvuelate
   </h1>
-  <Overlay />
+  <Form />
 </template>
 
 <script>
-import Overlay from "./components/Overlay.vue"
+import Form from "./components/Form.vue"
 
 export default {
   name: "App",
-  components: { Overlay },
+  components: { Form },
 }
 </script>
 
