@@ -1,233 +1,129 @@
 <template>
-  <Dialog as="template" static @close="close()" :open="open">
-    <transition :duration="500">
-      <section v-show="open" class="fixed inset-0 overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <DialogOverlay class="absolute inset-0" />
+  <Menu as="div" class="relative inline-block text-left">
+    <div>
+      <MenuButton
+        class="inline-flex justify-center rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 bg-gray-200 p-3"
+      >
+        Toggle menu
+      </MenuButton>
+    </div>
 
-          <div
-            class="absolute inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16"
-          >
-            <transition
-              enter-active-class="transform transition ease-in-out duration-500 sm:duration-700"
-              enter-from-class="translate-x-full"
-              enter-to-class="translate-x-0"
-              leave-active-class="transform transition ease-in-out duration-500 sm:duration-700"
-              leave-from-class="translate-x-0"
-              leave-to-class="translate-x-full"
-            >
-              <div v-if="open" class="w-screen max-w-md">
-                <div
-                  class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll"
-                >
-                  <div class="p-6">
-                    <div class="flex items-start justify-between">
-                      <DialogTitle class="text-lg font-medium text-gray-900">
-                        Team
-                      </DialogTitle>
-                      <div class="ml-3 h-7 flex items-center">
-                        <button
-                          class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
-                          @click="close()"
-                        >
-                          <span class="sr-only">Close panel</span>
-                          <XIcon class="h-6 w-6" aria-hidden="true" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border-b border-gray-200">
-                    <div class="px-6">
-                      <nav
-                        class="-mb-px flex space-x-6"
-                        x-descriptions="Tab component"
-                      >
-                        <a
-                          v-for="tab in tabs"
-                          :key="tab.name"
-                          :href="tab.href"
-                          :class="[
-                            tab.current
-                              ? 'border-indigo-500 text-indigo-600'
-                              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                            'whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm',
-                          ]"
-                          >{{ tab.name }}</a
-                        >
-                      </nav>
-                    </div>
-                  </div>
-                  <ul class="divide-y divide-gray-200 overflow-y-auto">
-                    <li
-                      v-for="person in team"
-                      :key="person.handle"
-                      class="px-6 py-5 relative"
-                    >
-                      <div class="group flex justify-between items-center">
-                        <a :href="person.href" class="-m-1 p-1 block">
-                          <div
-                            class="absolute inset-0 group-hover:bg-gray-50"
-                            aria-hidden="true"
-                          />
-                          <div
-                            class="flex-1 flex items-center min-w-0 relative"
-                          >
-                            <span class="flex-shrink-0 inline-block relative">
-                              <img
-                                class="h-10 w-10 rounded-full"
-                                :src="person.imageUrl"
-                                alt=""
-                              />
-                              <span
-                                :class="[
-                                  person.status === 'online'
-                                    ? 'bg-green-400'
-                                    : 'bg-gray-300',
-                                  'absolute top-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-white',
-                                ]"
-                                aria-hidden="true"
-                              />
-                            </span>
-                            <div class="ml-4 truncate">
-                              <p
-                                class="text-sm font-medium text-gray-900 truncate"
-                              >
-                                {{ person.name }}
-                              </p>
-                              <p class="text-sm text-gray-500 truncate">
-                                {{ "@" + person.handle }}
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                        <Menu
-                          as="div"
-                          class="ml-2 relative inline-block text-left"
-                        >
-                          <MenuButton
-                            class="group relative w-8 h-8 bg-white rounded-full inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          >
-                            <span class="sr-only">Open options menu</span>
-                            <span
-                              class="flex items-center justify-center h-full w-full rounded-full"
-                            >
-                              <DotsVerticalIcon
-                                class="w-5 h-5 text-gray-400 group-hover:text-gray-500"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          </MenuButton>
-                          <transition
-                            enter-active-class="transition ease-out duration-100"
-                            enter-from-class="transform opacity-0 scale-95"
-                            enter-to-class="transform opacity-100 scale-100"
-                            leave-active-class="transition ease-in duration-75"
-                            leave-from-class="transform opacity-100 scale-100"
-                            leave-to-class="transform opacity-0 scale-95"
-                          >
-                            <MenuItems
-                              class="origin-top-right absolute z-10 top-0 right-9 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                            >
-                              <div class="py-1">
-                                <MenuItem v-slot="{ active }">
-                                  <a
-                                    href="#"
-                                    :class="[
-                                      active
-                                        ? 'bg-gray-100 text-gray-900'
-                                        : 'text-gray-700',
-                                      'block px-4 py-2 text-sm',
-                                    ]"
-                                    >View profile</a
-                                  >
-                                </MenuItem>
-                                <MenuItem v-slot="{ active }">
-                                  <a
-                                    href="#"
-                                    :class="[
-                                      active
-                                        ? 'bg-gray-100 text-gray-900'
-                                        : 'text-gray-700',
-                                      'block px-4 py-2 text-sm',
-                                    ]"
-                                    >Send message</a
-                                  >
-                                </MenuItem>
-                              </div>
-                            </MenuItems>
-                          </transition>
-                        </Menu>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </transition>
-          </div>
+    <transition
+      enter-active-class="transition ease-out duration-100"
+      enter-from-class="transform opacity-0 scale-95"
+      enter-to-class="transform opacity-100 scale-100"
+      leave-active-class="transition ease-in duration-75"
+      leave-from-class="transform opacity-100 scale-100"
+      leave-to-class="transform opacity-0 scale-95"
+    >
+      <MenuItems
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-50"
+      >
+        <div class="px-4 py-3">
+          <p class="text-sm">
+            Signed in as
+          </p>
+          <p class="text-sm font-medium text-gray-900 truncate">
+            foo@bar.com
+          </p>
         </div>
-      </section>
+        <div class="py-1">
+          <MenuItem v-slot="{ active }">
+            <a
+              :class="[
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'group flex items-center px-4 py-2 text-sm',
+              ]"
+            >
+              Toggle foo
+
+              <Switch
+                v-model="toggleRef"
+                :class="toggleRef ? 'bg-blue-500' : 'bg-gray-500'"
+                class="ml-2 relative inline-flex items-center h-6 rounded-full w-11"
+              >
+                <span class="sr-only">Enable foo</span>
+                <span
+                  :class="toggleRef ? 'translate-x-6' : 'translate-x-1'"
+                  class="inline-block w-4 h-4 transform bg-white rounded-full"
+                />
+              </Switch>
+            </a>
+          </MenuItem>
+        </div>
+        <div class="py-1">
+          <MenuItem v-slot="{ active }">
+            <a
+              href="#"
+              :class="[
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'group flex items-center px-4 py-2 text-sm',
+              ]"
+            >
+              <svg
+                class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                ></path>
+              </svg>
+              Sign out
+            </a>
+          </MenuItem>
+        </div>
+        <div class="py-1">
+          <a href="#" :class="['group flex items-center px-4 py-2 text-sm']">
+            <svg
+              class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            Sign out
+          </a>
+        </div>
+      </MenuItems>
     </transition>
-  </Dialog>
+  </Menu>
 </template>
 
 <script>
+import { Menu, MenuButton, MenuItem, MenuItems, Switch } from "@headlessui/vue"
 import { ref } from "vue"
-import {
-  Dialog,
-  DialogOverlay,
-  DialogTitle,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/vue"
-import { XIcon } from "@heroicons/vue/outline"
-import { DotsVerticalIcon } from "@heroicons/vue/solid"
-
-const tabs = [
-  { name: "All", href: "#", current: true },
-  { name: "Online", href: "#", current: false },
-  { name: "Offline", href: "#", current: false },
-]
-const team = [
-  {
-    name: "Leslie Alexander",
-    handle: "lesliealexander",
-    href: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    status: "online",
-  },
-  // More people...
-]
 
 export default {
   components: {
-    Dialog,
-    DialogOverlay,
-    DialogTitle,
     Menu,
     MenuButton,
     MenuItem,
     MenuItems,
-    DotsVerticalIcon,
-    XIcon,
+    Switch,
   },
   setup() {
-    const open = ref(true)
+    const toggleRef = ref(false)
 
-    const close = () => {
-      open.value = false
-
-      setTimeout(() => (open.value = true), 2000)
-    }
-
-    return {
-      tabs,
-      team,
-      open,
-      close,
-    }
+    return { toggleRef }
   },
 }
 </script>

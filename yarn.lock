@@ -1775,6 +1775,11 @@
   resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-5.0.0-alpha.8.tgz#04bfc1220dbe9627d0d060c177a7e22531172aa7"
   integrity sha512-CIOl6KmHI2C7+JH2QtHkZOpt8FspqeJNGv/pwrgxX+ycqp/dpWUA2997bPzfR4WH5LC27trnOr28MYJbEp811w==
 
+"@vue/cli-plugin-vuex@~4.5.0":
+  version "4.5.13"
+  resolved "https://registry.nlark.com/@vue/cli-plugin-vuex/download/@vue/cli-plugin-vuex-4.5.13.tgz#98646d8bc1e69cf6c6a6cba2fed3eace0356c360"
+  integrity sha1-mGRti8HmnPbGpsui/tPqzgNWw2A=
+
 "@vue/cli-service@^5.0.0-alpha.8":
   version "5.0.0-alpha.8"
   resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-5.0.0-alpha.8.tgz#1cc4cac20022030f92c2816171444ce6dd960068"
@@ -1918,6 +1923,11 @@
     vue-template-es2015-compiler "^1.9.0"
   optionalDependencies:
     prettier "^1.18.2"
+
+"@vue/devtools-api@^6.0.0-beta.11":
+  version "6.0.0-beta.13"
+  resolved "https://registry.nlark.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.13.tgz#ff31e552ae3e99b5f2c0af0ca81f0889dbfb2155"
+  integrity sha1-/zHlUq4+mbXywK8MqB8Iidv7IVU=
 
 "@vue/eslint-config-typescript@^7.0.0":
   version "7.0.0"
@@ -9981,6 +9991,13 @@ vue@^3.0.0:
     "@vue/compiler-dom" "3.0.11"
     "@vue/runtime-dom" "3.0.11"
     "@vue/shared" "3.0.11"
+
+vuex@^4.0.0-0:
+  version "4.0.1"
+  resolved "https://registry.nlark.com/vuex/download/vuex-4.0.1.tgz#e83c541d6f31173969efabb2c5d1c465b682887e"
+  integrity sha1-6DxUHW8xFzlp76uyxdHEZbaCiH4=
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
