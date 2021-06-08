@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Overlay from "./components/Overlay.vue"
+import Overlay from "./components/Menu.vue"
 
 export default {
   name: "App",

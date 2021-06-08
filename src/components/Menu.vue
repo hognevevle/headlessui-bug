@@ -35,7 +35,7 @@
                 'group flex items-center px-4 py-2 text-sm',
               ]"
             >
-              Toggle foo
+              Toggle foo (MenuItem)
 
               <Switch
                 v-model="toggleRef"
@@ -80,7 +80,7 @@
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                 ></path>
               </svg>
-              Sign out
+              Settings (MenuItem)
             </a>
           </MenuItem>
         </div>
@@ -100,7 +100,7 @@
                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
               ></path>
             </svg>
-            Sign out
+            Sign out (not a MenuItem)
           </a>
         </div>
       </MenuItems>
